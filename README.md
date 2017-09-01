@@ -1,4 +1,4 @@
-Here you can find config files for my openbox configuration:
+Here you can find config files for my i3wm configuration:
 
 Many themes come from the amazing distro called **ARCHlabs**.
 
@@ -10,5 +10,5 @@ Many themes come from the amazing distro called **ARCHlabs**.
 
 Tint2 and conky from **ARCHlabs**(edited a little)
 
-This is the result [Screenshot2](screenshot.png)!!!
+This is the result [Screenshot](screenshot.png)!!!
 
