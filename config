@@ -152,6 +152,12 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+#windows style
+new_window pixel
+new_window pixel 1
+new_float pixel
+new_float pixel 1
+
 # i3 windows colors
 
 client.focused 		#c51b1b #c51b1b #f2ff1f #F09B19 
@@ -160,8 +166,8 @@ client.urgent 		#F09B19 #F09B19 #c51b1b #F09B19
 
 # i3-gaps
 smart_gaps on
-gaps inner 7
-gaps outer 2
+gaps inner 5
+gaps outer 1
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -175,8 +181,11 @@ exec_always conky -c /home/dlcgold/.i3-conkyrc
 #Start nm-applet
 exec_always nm-applet
 
+#Start volumeicon
+exec_always volumeicon
+
 # Start wallpaper
-exec_always  feh --bg-scale /home/dlcgold/immagini/sfondo.png
+exec_always  feh --bg-scale /home/dlcgold/immagini/flat-deer.png
 
 # Start compositor
 exec_always compton
@@ -218,7 +227,9 @@ bindsym $mod+m exec audacious
 bindsym $mod+y exec google-chrome-stable
 bindsym $mod1+y exec midori
 bindsym $mod+n exec netsurf                                                                       
-#bindsym $mod1+l exec /bin/lock                                                               
+bindsym $mod1+l exec lock -f  Open-Sans-Bold-Italic -- scrot -z                                                             
 bindsym $mod+c exec gnome-screenshot                                                                
 bindsym $mod1+t exec /home/dlcgold/Scaricati/Telegram/Telegram                                                                 
 bindsym $mod+x exec oblogout
+bindsym $mod1+m exec /home/dlcgold/Scaricati/moodledesktop-3.3.2-x86_64.AppImage
+bindsym $mod1+s exec i3-scrot
