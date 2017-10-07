@@ -60,18 +60,18 @@ conky.config = {
 												-- middle_left,middle_middle,middle_right,none
 	--Arch Duoscreen
 	--gap_x = -1910,
-	gap_x = 20,									-- pixels between right or left border
-	gap_y = 50,									-- pixels between bottom or left border
-	minimum_height = 610,						-- minimum height of window
-	minimum_width = 250,						-- minimum height of window
-	maximum_width = 250,						-- maximum height of window
+	gap_x = 30,									-- pixels between right or left border
+	gap_y = 70,									-- pixels between bottom or left border
+	minimum_height = 100,						-- minimum height of window
+	minimum_width = 228,						-- minimum height of window
+	maximum_width = 228,						-- maximum height of window
 
 	--Graphical
 
 	border_inner_margin = 0, 					-- margin between border and text
 	border_outer_margin = 0, 					-- margin between border and edge of window
 	border_width = 0, 							-- border width in pixels
-	default_bar_width = 280,					-- default is 0 - full width					
+	default_bar_width = 270,					-- default is 0 - full width					
 	default_bar_height = 10,					-- default is 6
 	default_gauge_height = 25,					-- default is 25
 	default_gauge_width =40,					-- default is 40
@@ -138,38 +138,39 @@ conky.config = {
 };
 
 conky.text = [[
-${image ~/.config/conky2/harfo/images/top-bg.png -p 0,10 -s 228x61}\
-${image ~/.config/conky2/harfo/images/bottom-bg.png -p 0,472 -s 228x178}\
-${image ~/.config/conky2/harfo/images/bg-1.png -p 0,157 -s 228x86}\
-${image ~/.config/conky2/harfo/images/bg-2.png -p 0,243 -s 228x105}\
-${image ~/.config/conky2/harfo/images/bg-3.png -p 0,348 -s 228x110}\
-${image ~/.config/conky2/harfo/images/bg-4.png -p 0,458 -s 228x14}\
-${image ~/.config/conky2/harfo/images/bg-5.png -p 0,255 -s 228x14}\
-${image ~/.config/conky2/harfo/images/bg-6.png -p 0,71 -s 228x86}\
-${image ~/.config/conky2/harfo/images/fav-color.png -p 0,69 -s 228x89}\
-${image ~/.config/conky2/harfo/images/border.png -p 0,10 -s 228x640}\
-${image ~/.config/conky2/harfo/images/separator-h.png -p 1,472 -s 226x1}\
-${image ~/.config/conky2/harfo/images/bg-5.png -p 0,365 -s 228x14}\
-${image ~/.config/conky2/harfo/images/separator-h.png -p 1,568 -s 226x1}\
-${image ~/.config/conky2/harfo/images/separator-v.png -p 114,473 -s 1x95}\
+${voffset -20}
+${image ~/.config/conky2/harfo/images/top-bg.png -p 0,0 -s 228x61}\
+${image ~/.config/conky2/harfo/images/bottom-bg.png -p 0,462 -s 228x178}\
+${image ~/.config/conky2/harfo/images/bg-1.png -p 0,147 -s 228x86}\
+${image ~/.config/conky2/harfo/images/bg-2.png -p 0,233 -s 228x105}\
+${image ~/.config/conky2/harfo/images/bg-3.png -p 0,338 -s 228x110}\
+${image ~/.config/conky2/harfo/images/bg-4.png -p 0,448 -s 228x14}\
+${image ~/.config/conky2/harfo/images/bg-5.png -p 0,245 -s 228x14}\
+${image ~/.config/conky2/harfo/images/bg-6.png -p 0,61 -s 228x86}\
+${image ~/.config/conky2/harfo/images/fav-color.png -p 0,59 -s 228x89}\
+${image ~/.config/conky2/harfo/images/border.png -p 0,0 -s 228x640}\
+${image ~/.config/conky2/harfo/images/separator-h.png -p 1,462 -s 226x1}\
+${image ~/.config/conky2/harfo/images/bg-5.png -p 0,355 -s 228x14}\
+${image ~/.config/conky2/harfo/images/separator-h.png -p 1,558 -s 226x1}\
+${image ~/.config/conky2/harfo/images/separator-v.png -p 114,463 -s 1x95}\
 \
-${voffset 20}${font Droid Sans :size=11}${alignc 10}${color}${execi 6000 lsb_release -d | grep 'Descr'|awk {'print $2 " " $3" " $4" " $5'}}
-${voffset 6}${font Droid Sans :size=10}${alignc 10}Kernel : ${kernel}${font}${color}
+${voffset 20}${font Droid Sans :size=11}${alignc 0}${color}${execi 6000 lsb_release -d | grep 'Descr'|awk {'print $2 " " $3" " $4" " $5'}}
+${voffset 6}${font Droid Sans :size=10}${alignc 0}Kernel : ${kernel}${font}${color}
 ${voffset 6}${goto 35}${font Droid Sans :size=48}${color1}${time %H:%M}${font}
 ${voffset 1}${goto 65}${font Droid Sans :size=15}${time %d %b } ${time %a}${font}${color}
 \
 ${voffset 14}${goto 10}Cpu :${color}
 ${voffset 4}${goto 10}Mem :${color}
-${voffset 4}${goto 10}Uptime :${color}
+${voffset 4}${goto 10}Temp :${color}
 \
 ${voffset -47}${alignr 30}${cpu cpu0}%
 ${voffset 4}${alignr 30}${memperc}%
-${voffset 4}${alignr 30}${uptime_short}
+${voffset 4}${alignr 30}${execi 10 sensors | grep 'Core 0' | awk {'print $3'}}
 ${voffset -47}${alignc 10 }${cpubar 5,36}
 ${voffset 4}${alignc 10}${membar 5,36}
 ${voffset 20}${alignr 30}${loadgraph 26,212 -l}${color}
 \
-${voffset 0}${goto 10}TOP MEM
+${voffset -3}${goto 10}TOP MEM
 ${voffset -13}${alignc -5}MEM %
 ${voffset -13}${alignr 30}MEM${color}
 \
@@ -219,18 +220,18 @@ ${voffset 8}${goto 10}${upspeedgraph wlp4so 26,100} ${goto 121}${downspeedgraph 
 ${voffset 9}${goto 10}Sent : ${totalup wlp4s0} ${goto 132}Received : ${totaldown wlp4s0}${color}
 ${else}
 ${voffset 99}${goto 10}Network : Disconnected${color}
-${image ~/.config/conky2/harfo/images/off.png -p 170,590 -s 40x40}
-${image ~/.config/conky2/harfo/images/red-off.png -p 2,72 -s 225x83}
+${image ~/.config/conky2/harfo/images/off.png -p 170,580 -s 40x40}
+${image ~/.config/conky2/harfo/images/red-off.png -p 2,62 -s 225x83}
 ${else}
 ${voffset 1}${goto 10}Network : Connected${color}
-${image ~/.config/conky2/harfo/images/on-red.png -p 170,590 -s 40x40}
-${image ~/.config/conky2/harfo/images/orange-on.png -p 2,72 -s 224x83}
+${image ~/.config/conky2/harfo/images/on-red.png -p 170,580 -s 40x40}
+${image ~/.config/conky2/harfo/images/orange-on.png -p 2,62 -s 224x83}
 ${endif}
 \
 ${voffset -35}${goto 10}SSID : ${wireless_essid wlp4s0}
 ${voffset 4}${goto 10}Speed : ${wireless_bitrate wlp4s0}
 ${voffset 4}${goto 10}Signal : ${wireless_link_qual_perc wlp4s0} %
-${voffset -100}
+${voffset -107}
 ##========================== Regards, Etles_Team =========================##
 ]];
 
