@@ -231,7 +231,11 @@ ${endif}
 ${voffset -35}${goto 10}SSID : ${wireless_essid wlp4s0}
 ${voffset 4}${goto 10}Speed : ${wireless_bitrate wlp4s0}
 ${voffset 4}${goto 10}Signal : ${wireless_link_qual_perc wlp4s0} %
-${voffset -107}
+${if_existing /proc/net/route wlp4s0}${font}
+${voffset -133}
+${else}
+${voffset -142}
+${endif}
 ##========================== Regards, Etles_Team =========================##
 ]];
 
